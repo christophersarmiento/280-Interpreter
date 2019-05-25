@@ -1,0 +1,25 @@
+set NL "\n";
+
+print 5*4;
+print NL
+
+set zzz 31*76;
+print zzz;
+print NL
+
+print zzz/5;
+print NL
+
+set zzz zzz/1000;
+print zzz;
+print NL
+
+print zzz * 9;
+print NL
+
+print "all right " * 3;
+print NL
+print 4*"help!";
+print NL
+print "long string" * 0;
+print NL

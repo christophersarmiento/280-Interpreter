@@ -1,0 +1,11 @@
+set x 7;
+
+print x; print "\n"
+
+set x 12; set y x ; set z x
+
+print z; print "\n"
+
+set x 4;
+set x "4"
+print x*"\n"

@@ -1,0 +1,9 @@
+set T 1
+set incr 3
+set NL "\n"
+
+print T;
+print NL
+set T T + incr
+print T
+print NL

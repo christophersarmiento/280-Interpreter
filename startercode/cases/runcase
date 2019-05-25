@@ -1,0 +1,88 @@
+ex=~/prog4
+
+cd $LIB/public/p4
+
+[ ! -e $ex ] && echo Cannot find the program, please build it! && exit 1
+
+ofile=`mktemp`
+
+errorcase=0
+
+case "$1" in
+	badfile)
+		args="nosuchfile"
+		;;
+
+	toomanyfile)
+		args="emptyfile nosuchfile"
+		;;
+
+	emptyfile)
+		args="emptyfile" 
+		;;
+
+	good[1-8])
+		args="$1" 
+		;;
+
+	bad[1-8])
+		args="$1" 
+		;;
+
+	harder[1-8])
+		args="$1" 
+		;;
+
+	badder[1-8])
+		args="$1" 
+		;;
+
+	*)
+		echo "cases are badfile, toomanyfile, emptyfile"
+        for i in 1 2 3 4 5 6 7 8; do echo -n "good$i, "; done
+        for i in 1 2 3 4 5 6 7 8; do echo -n "bad$i, "; done
+        echo
+        for i in 1 2 3 4 5 6 7 8; do echo -n "harder$i, "; done
+        for i in 1 2 3 4 5 6 7 8 ; do echo -n "badder$i, "; done
+        echo
+		exit 1
+		;;
+esac
+
+echo RUNNING prog4 $args
+
+score=0
+
+if [ "$GRADING" = 1 ] ;
+then
+    eval ./wrapcase.pl -- "bash -c '$ex $args 2>&1'" | tee $ofile
+else
+    eval $ex $args 2>&1 | tee $ofile
+fi
+
+## for setup ## cp $ofile ${1}.correct
+
+rc=0
+if [ $errorcase -eq 0 ] ;
+then
+    diff $ofile ${1}.correct
+    rc=$?
+else
+    segs=$(grep "Segment" $ofile | wc -l)
+    errs=$(grep ": RUNTIME ERROR " $ofile | egrep '[0-9]+: .*' | wc -l)
+    diff <(cat $ofile | head -n -1) <(cat ${1}.correct | head -n -1)
+    drc=$?
+    if [ $errs -ne 1 -o $segs -ne 0 -o $drc -ne 0 ]; then rc=1; fi
+fi
+
+
+[ $rc -eq 0 ] && score=1
+
+echo RESULT: $1 "[ " $score " / 1 ]"
+
+rm $ofile
+
+exit $rc
+
+
+

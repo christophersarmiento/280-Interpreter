@@ -1,0 +1,11 @@
+
+print "loopy\n";
+set i 0
+set inc 3
+set max 12
+
+loop i - max begin
+	print i
+	print "\n"
+	set i i + inc
+end

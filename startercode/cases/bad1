@@ -1,0 +1,9 @@
+set x true;
+
+print "will I see this??\n"
+
+if x begin 
+print "yes x is true\n"; 
+end
+
+if 7 begin print "should work?\n"; end

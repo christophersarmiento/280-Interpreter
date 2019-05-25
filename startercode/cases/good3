@@ -1,0 +1,10 @@
+# vars
+
+set x 3;
+print x;
+
+set x 5;
+print x;
+
+set x "\nnow, a string!\n";
+print x;

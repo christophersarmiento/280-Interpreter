@@ -1,0 +1,23 @@
+set x 2;
+print 4 * x * x * x + 2 * x * x + 7 * x - 5;
+print "\n"
+
+set x 1;
+print 4 * x * x * x + 2 * x * x + 7 * x - 5;
+print "\n"
+
+set x "never!"
+print "x\n"
+
+print "well, hardly ever..."
+
+set x 0;
+print 4 * x * x * x + 2 * x * x + 7 * x - 5;
+print "\n"
+
+print 10/4;
+print "\n"
+print 10/0;
+print "\n"
+print 10;
+print "\n"

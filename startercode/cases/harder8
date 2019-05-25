@@ -1,0 +1,9 @@
+set x 0
+
+if x+1 begin set x 9*5;
+end
+
+if x - 45 begin set x "funky error?"; end
+
+print x;
+print "\n"

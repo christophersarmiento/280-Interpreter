@@ -1,0 +1,10 @@
+set myX 10
+
+set y 4
+
+loop myX - y begin
+	print "hi!\n"
+	set y y + 2
+end
+
+print "that was kinda boring, actually\n"
